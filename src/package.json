@@ -1,0 +1,9 @@
+{
+  "name": "triangular",
+  "version": "2.5.0",
+  "private": true,
+  "main": "main-electron.js",
+  "scripts": {
+    "start": "electron main-electron.js"
+  }
+}
