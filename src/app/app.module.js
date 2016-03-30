@@ -6,7 +6,8 @@
             'triangular', 'ngCookies', 'ngSanitize',
             'ngMessages', 'ngMaterial', 'ui.router',  'LocalStorageModule',
             'angularMoment', 'md.data.table',
-            'contract_management'
+            'contract_management',
+            'property_management'
             // uncomment above to activate the example seed module
             //'app.examples'
         ])

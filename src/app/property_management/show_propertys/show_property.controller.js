@@ -2,8 +2,8 @@
     'use strict';
 
     angular
-        .module('contract_management')
-        .controller('SeedPageController', SeedPageController);
+        .module('property_management')
+        .controller('ShowPropertyController', SeedPageController);
 
     /* @ngInject */
     function SeedPageController($http) {
