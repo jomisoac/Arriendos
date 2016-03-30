@@ -2,6 +2,6 @@
     'use strict';
 
     angular
-        .module('property_management', [
+        .module('app.modules.contract_management', [
         ]);
 })();

@@ -37,8 +37,8 @@
 
 
         // set default routes when no path specified
-        $urlRouterProvider.when('', '/contract_management');
-        $urlRouterProvider.when('/', '/contract_management');
+        $urlRouterProvider.when('', '/gestion-pagos/registrar_pago');
+        $urlRouterProvider.when('/', '/gestion-pagos/registrar_pago');
 
         // always goto 404 if route not found
         $urlRouterProvider.otherwise('/404');
