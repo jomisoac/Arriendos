@@ -2,7 +2,7 @@
     'use strict';
 
     angular
-        .module('seed-module')
+        .module('contract_management')
         .controller('SeedPageController', SeedPageController);
 
     /* @ngInject */

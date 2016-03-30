@@ -18,7 +18,7 @@
             controller: function($state) {
                 var vm = this;
                 vm.goHome = function() {
-                    $state.go('triangular.admin-default.dashboard-analytics');
+                    $state.go('contract_management');
                 };
             }
         })
@@ -30,15 +30,15 @@
             controller: function($state) {
                 var vm = this;
                 vm.goHome = function() {
-                    $state.go('triangular.admin-default.dashboard-analytics');
+                    $state.go('contract_management');
                 };
             }
         });
 
 
         // set default routes when no path specified
-        $urlRouterProvider.when('', '/seed-module/seed-page');
-        $urlRouterProvider.when('/', '/seed-module/seed-page');
+        $urlRouterProvider.when('', '/contract_management');
+        $urlRouterProvider.when('/', '/contract_management');
 
         // always goto 404 if route not found
         $urlRouterProvider.otherwise('/404');
