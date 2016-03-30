@@ -4,8 +4,7 @@
   "private": true,
   "main": "main-electron.js",
   "scripts": {
-    "start": "electron main-electron.js",
-    "build": "gulp electron"
+    "start": "electron main-electron.js"
   },
   "devDependencies": {
     "browser-sync": "^2.11.2",
@@ -17,7 +16,6 @@
     "gulp-angular-templatecache": "^1.8.0",
     "gulp-autoprefixer": "^3.1.0",
     "gulp-csso": "^1.0.1",
-    "gulp-electron": "0.0.10",
     "gulp-eslint": "^1.1.1",
     "gulp-filter": "~3.0.1",
     "gulp-flatten": "^0.2.0",

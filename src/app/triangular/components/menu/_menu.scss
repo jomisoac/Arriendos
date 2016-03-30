@@ -28,7 +28,7 @@ tri-menu {
     transform: rotate(90deg);
     transition: all .2s;
   }
-  .md-locked-open & {
+  ._md-locked-open & {
     display: block;
   }
 }
@@ -182,7 +182,7 @@ $submenu-overlay: #999999;
 }
 
 // Collapsible Menu
-.admin-sidebar-collapsed.md-locked-open {
+.admin-sidebar-collapsed._md-locked-open {
   .sidebar-left-title, .sidebar-left-icon {
     opacity: 0;
     transition: all .2s;

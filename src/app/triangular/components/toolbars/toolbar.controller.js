@@ -6,14 +6,13 @@
         .controller('DefaultToolbarController', DefaultToolbarController);
 
     /* @ngInject */
-    function DefaultToolbarController($scope, $rootScope, $mdMedia, $state, $element, $filter, $mdUtil, $mdSidenav, $mdToast, $timeout, $document, triBreadcrumbsService, triSettings, triLayout) {
+    function DefaultToolbarController($scope, $rootScope, $mdMedia, $mdUtil, $mdSidenav, $document, triBreadcrumbsService, triSettings, triLayout) {
         var vm = this;
         vm.breadcrumbs = triBreadcrumbsService.breadcrumbs;
         vm.emailNew = false;
         vm.languages = triSettings.languages;
         vm.openSideNav = openSideNav;
         vm.hideMenuButton = hideMenuButton;
-        vm.switchLanguage = switchLanguage;
         vm.toggleNotificationsTab = toggleNotificationsTab;
         vm.isFullScreen = false;
         vm.fullScreenIcon = 'zmdi zmdi-fullscreen';
@@ -27,10 +26,6 @@
             $mdUtil.debounce(function(){
                 $mdSidenav(navID).toggle();
             }, 300)();
-        }
-
-        function switchLanguage(languageCode) {
-            
         }
 
         function hideMenuButton() {

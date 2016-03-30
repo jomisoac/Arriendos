@@ -13,6 +13,8 @@
     "angular-sanitize": "1.4.8",
     "angular-ui-router": "~0.2.18",
     "animatewithsass": "~3.2.2",
+    "font-awesome": "~4.5.0",
+    "jquery": "~2.2.1",
     "material-design-iconic-font": "~2.2.0"
   }
 }
