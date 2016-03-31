@@ -13,7 +13,7 @@
                 url: '/gestion-contratos/contratos',
                 templateUrl: 'app/modules/contract_management/show_contracts/show_contracts.tmpl.html',
                 // set the controller to load for this page
-                controller: 'SeedPageController',
+                controller: 'ShowContractController',
                 controllerAs: 'vm'
             })
             .state('triangular.admin-default.new_contract', {

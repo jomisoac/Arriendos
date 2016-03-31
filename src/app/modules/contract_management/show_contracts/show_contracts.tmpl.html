@@ -1,12 +1,79 @@
 <md-content class="padded-content-page">
-    <div layout="row" layout-align="center center">
-        <h2 class="md-display-3">CONTRATOS</h2>
-    </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
+    <!--<div layout="row" layout-align="center center">-->
+        <!--<h2 class="md-display-3">CONTRATOS</h2>-->
+    <!--</div>-->
+    <!--<div class="margin-20" layout="row" layout-align="center center">-->
+
+    <!--</div>-->
+    <div>
+        <md-toolbar ng-hide="vm.selected.length || vm.filter.show" class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+                <h2 class="md-title">Contratos</h2>
+                <div flex></div>
+                <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+                    <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+                <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+                <form flex="" name="vm.filter.form">
+                    <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="Buscar">
+                </form>
+                <md-button class="md-icon-button" ng-click="vm.removeFilter()">
+                    <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <!--<md-toolbar class="md-table-toolbar alternate" ng-show="vm.selected.length">-->
+            <!--<div class="md-toolbar-tools" layout-align="space-between">-->
+                <!--<div>{{vm.selected.length}} {{vm.selected.length > 1 ? 'users' : 'user'}} selected</div>-->
+            <!--</div>-->
+        <!--</md-toolbar>-->
+
+        <md-table-container>
+            <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.selected" md-progress="vm.promise">
+                <thead md-head md-order="vm.query.order" md-on-reorder="vm.getUsers">
+                <tr md-row>
+                    <th md-column md-numberic md-order-by="id"><span >Identificacion</span></th>
+                    <th md-column><span >Nombres</span></th>
+                    <th md-column><span >Apellidos</span></th>
+                    <th md-column><span >Fehca de contrato</span></th>
+                    <th md-column><span >Valor de arriendo</span></th>
+                    <th md-column><span >Acciones</span></th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row >
+                    <td md-cell>1120746041</td>
+                    <td md-cell>Jose Miguel</td>
+                    <td md-cell>Soto Acosta</td>
+                    <td md-cell>03/03/2016</td>
+                    <td md-cell>{{ 850000 | currency}}</td>
+                    <td md-cell>
+                        <a class="list-group-item" title="Ver" href="javascript:;"><i class="zmdi zmdi-eye zmdi-hc-2x zmdi-hc-border mdc-text-blue"></i></a>
+                        <a class="list-group-item" title="Editar" href="javascript:;"><i class="zmdi zmdi-edit zmdi-hc-2x zmdi-hc-border mdc-text-green"></i></a>
+                        <a class="list-group-item" title="Eliminar" href="javascript:;"><i class="zmdi zmdi-delete zmdi-hc-2x zmdi-hc-border mdc-text-red"></i></a>
+                    </td>
+                </tr>
+                <tr md-row >
+                    <td md-cell>26995809</td>
+                    <td md-cell>Isabel Paulina</td>
+                    <td md-cell>Acosta Sierra</td>
+                    <td md-cell>03/03/2016</td>
+                    <td md-cell>{{ 1500000 | currency}}</td>
+                    <td md-cell>
+                        <a class="list-group-item" title="Ver" href="javascript:;"><i class="zmdi zmdi-eye zmdi-hc-2x zmdi-hc-border mdc-text-blue"></i></a>
+                        <a class="list-group-item" title="Editar" href="javascript:;"><i class="zmdi zmdi-edit zmdi-hc-2x zmdi-hc-border mdc-text-green"></i></a>
+                        <a class="list-group-item" title="Eliminar" href="javascript:;"><i class="zmdi zmdi-delete zmdi-hc-2x zmdi-hc-border mdc-text-red"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+        <md-table-pagination md-limit="vm.query.limit" md-page-select md-page="vm.query.page" md-total="{{vm.users.length}}" md-on-paginate="vm.getUsers"></md-table-pagination>
     </div>
 </md-content>
