@@ -1,0 +1,51 @@
+<md-content class="padded-content-page">
+    <div>
+        <md-toolbar ng-hide="vm.selected.length || vm.filter.show" class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+                <h2 class="md-title">Clientes</h2>
+                <div flex></div>
+                <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+                    <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+        <md-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-table-toolbar md-default">
+            <div class="md-toolbar-tools">
+                <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+                <form flex="" name="vm.filter.form">
+                    <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="Buscar">
+                </form>
+                <md-button class="md-icon-button" ng-click="vm.removeFilter()">
+                    <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+                </md-button>
+            </div>
+        </md-toolbar>
+
+        <md-table-container>
+            <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.selected" md-progress="vm.promise">
+                <thead md-head md-order="vm.query.order" md-on-reorder="vm.getUsers">
+                <tr md-row>
+                    <th md-column md-numberic md-order-by="id"><span >Identificacion</span></th>
+                    <th md-column><span >Nombres</span></th>
+                    <th md-column><span >Apellidos</span></th>
+                    <th md-column><span >Acciones</span></th>
+                </tr>
+                </thead>
+                <tbody md-body>
+                <tr md-row ng-repeat="client in vm.clients | filter: vm.query.filter">
+                    <td md-cell>{{client.identificacion}}</td>
+                    <td md-cell>{{client.nombres}}</td>
+                    <td md-cell>{{client.apellidos}}</td>
+                    <td md-cell>
+                        <a class="list-group-item" title="Ver" href="javascript:;"><i class="zmdi zmdi-eye zmdi-hc-2x zmdi-hc-border mdc-text-blue"></i></a>
+                        <a class="list-group-item" title="Editar" href="javascript:;"><i class="zmdi zmdi-edit zmdi-hc-2x zmdi-hc-border mdc-text-green"></i></a>
+                        <a class="list-group-item" title="Eliminar" href="javascript:;"><i class="zmdi zmdi-delete zmdi-hc-2x zmdi-hc-border mdc-text-red"></i></a>
+                    </td>
+                </tr>
+                </tbody>
+            </table>
+        </md-table-container>
+
+        <md-table-pagination md-limit="vm.query.limit" md-page-select md-page="vm.query.page" md-total="{{vm.clients.length}}" md-on-paginate="vm.cargarClientes"></md-table-pagination>
+    </div>
+</md-content>

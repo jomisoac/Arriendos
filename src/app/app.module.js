@@ -3,7 +3,7 @@
 
     angular
         .module('app', [
-            'triangular', 'ngCookies', 'ngSanitize',
+            'triangular', 'ngCookies', 'ngSanitize', 
             'ngMessages', 'ngMaterial', 'ui.router',  'LocalStorageModule',
             'angularMoment', 'md.data.table',
             'app.modules',
