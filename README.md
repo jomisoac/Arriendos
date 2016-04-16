@@ -1,3 +1,3 @@
 # Arriendos
 
-Aplicacion de Arriendos con AngularJs, Electron, NodeJs y neDB
+Aplicacion de Arriendos con AngularJs, Electron, Django Rest Framework y MySql
