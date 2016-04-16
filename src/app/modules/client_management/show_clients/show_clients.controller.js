@@ -6,11 +6,11 @@
         .controller('ShowClientsController', ShowClientsController);
 
     /* @ngInject */
-    function ShowClientsController($http, $scope) {
+    function ShowClientsController($scope,Restangular) {
         var vm = this;
         vm.clients = [];
 
-        vm.cargarClientes = cargarClientes;
+        vm.cargarClientes = getClients;
         vm.removeFilter = removeFilter;
 
         vm.query = {
@@ -44,23 +44,12 @@
                     vm.query.page = bookmark;
                 }
             });
-            cargarClientes();
+            getClients();
         }
 
-        function cargarClientes() {
+        function getClients() {
             vm.clients = [];
-            var req = {
-                method: 'GET',
-                url: 'http://127.0.0.1:8000/clientes/',
-            }
-            $http(req).then(
-                function(res){
-                    console.log(res)
-                    vm.clients = res.data;
-                },
-                function(err){
-                    console.log(err)
-                });
+            vm.clients = Restangular.all('clientes/').getList().$object;
         }
 
         function removeFilter() {

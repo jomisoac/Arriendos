@@ -6,7 +6,10 @@
         .config(routeConfig);
 
     /* @ngInject */
-    function routeConfig($stateProvider, $urlRouterProvider) {
+    function routeConfig($stateProvider, $urlRouterProvider, RestangularProvider) {
+        // config restangular
+        RestangularProvider.setBaseUrl('http://127.0.0.1:8000/');
+        //
         // Setup the apps routes
 
         // 404 & 500 pages

@@ -1,12 +1,23 @@
 <md-content class="padded-content-page">
-    <div layout="row" layout-align="center center">
-        <h2 class="md-display-3">NUEVO CLIENTE</h2>
-    </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
+    <div layout="row" layout-xs="column">
+        <div flex="50">
+            <h2>Create User</h2>
+
+            <md-input-container md-no-float class="md-block">
+                <md-icon md-font-icon="zmdi zmdi-account-box"></md-icon>
+                <input type="text" placeholder="Identificacion" ng-model="vm.client.identificacion">
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+                <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
+                <input type="text" placeholder="Nombres" ng-model="vm.client.nombres">
+            </md-input-container>
+            <md-input-container md-no-float class="md-block">
+                <md-icon md-font-icon="zmdi zmdi-account"></md-icon>
+                <input type="text" placeholder="Apellidos" ng-model="vm.client.apellidos">
+            </md-input-container>
+            <div layout="row" layout-align="end center">
+                <md-button class="md-primary md-raised" md-ripple-size="full" aria-label="ripple full" ng-click="vm.addClient()">Guardar</md-button>
+            </div>
+        </div>
     </div>
 </md-content>
