@@ -7,34 +7,42 @@
 
     /* @ngInject */
     function routeConfig($stateProvider, $urlRouterProvider, RestangularProvider) {
-        // config restangular
+      // config restangular
         RestangularProvider.setBaseUrl('http://127.0.0.1:8000/');
-        //
         // Setup the apps routes
 
         // 404 & 500 pages
         $stateProvider
         .state('404', {
             url: '/404',
-            templateUrl: '404.tmpl.html',
-            controllerAs: 'vm',
-            controller: function($state) {
-                var vm = this;
-                vm.goHome = function() {
-                    $state.go('contract_management');
-                };
+            views: {
+                'root': {
+                    templateUrl: '404.tmpl.html',
+                    controller: 'ErrorPageController',
+                    controllerAs: 'vm'
+                }
+            }
+        })
+
+        .state('401', {
+            url: '/401',
+            views: {
+                'root': {
+                    templateUrl: '401.tmpl.html',
+                    controller: 'ErrorPageController',
+                    controllerAs: 'vm'
+                }
             }
         })
 
         .state('500', {
             url: '/500',
-            templateUrl: '500.tmpl.html',
-            controllerAs: 'vm',
-            controller: function($state) {
-                var vm = this;
-                vm.goHome = function() {
-                    $state.go('contract_management');
-                };
+            views: {
+                'root': {
+                    templateUrl: '500.tmpl.html',
+                    controller: 'ErrorPageController',
+                    controllerAs: 'vm'
+                }
             }
         });
 

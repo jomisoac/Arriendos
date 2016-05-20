@@ -6,7 +6,13 @@ var paths = gulp.paths;
 
 var $ = require('gulp-load-plugins')();
 
-gulp.task('styles', function () {
+gulp.task('triangular.scss', function () {
+  return gulp.src(paths.src + '/app/triangular/**/*.scss')
+    .pipe($.concat('triangular.scss'))
+    .pipe(gulp.dest(paths.tmp + '/serve/app/'));
+});
+
+gulp.task('styles', ['triangular.scss'], function () {
 
   var sassOptions = {
     style: 'expanded',
@@ -16,10 +22,11 @@ gulp.task('styles', function () {
   };
 
   var injectFiles = gulp.src([
+    paths.tmp + '/serve/app/triangular.scss',
     paths.src + '/app/**/*.scss',
     '!' + paths.src + '/app/app.scss',
     '!' + paths.src + '/app/**/_*.scss',
-    '!' + paths.src + '/app/triangular/triangular.scss'
+    '!' + paths.src + '/app/triangular/**/*'
   ], { read: false });
 
   var injectOptions = {

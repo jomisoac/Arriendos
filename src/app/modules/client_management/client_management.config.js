@@ -9,14 +9,14 @@
     function moduleConfig($stateProvider, triMenuProvider) {
 
         $stateProvider
-            .state('triangular.admin-default.register_client', {
+            .state('triangular.register_client', {
                 url: '/gestion-clientes/registrar_cliente',
                 templateUrl: 'app/modules/client_management/new_client/new_client.tmpl.html',
                 // set the controller to load for this page
                 controller: 'RegisterClientController',
                 controllerAs: 'vm'
             })
-            .state('triangular.admin-default.show_clients', {
+            .state('triangular.show_clients', {
                 url: '/gestion-clientes/clientes',
                 templateUrl: 'app/modules/client_management/show_clients/show_clients.tmpl.html',
                 // set the controller to load for this page
@@ -31,11 +31,11 @@
             priority: 1.1,
             children: [{
                 name: 'Registrar cliente',
-                state: 'triangular.admin-default.register_client',
+                state: 'triangular.register_client',
                 type: 'link'
             }, {
                 name: 'Mostrar clientes',
-                state: 'triangular.admin-default.show_clients',
+                state: 'triangular.show_clients',
                 type: 'link'
             }]
         });

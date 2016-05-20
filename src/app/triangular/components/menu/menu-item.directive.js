@@ -7,10 +7,6 @@
 
     /* @ngInject */
     function triMenuItemDirective() {
-        // Usage:
-        //
-        // Creates:
-        //
         var directive = {
             restrict: 'E',
             require: '^triMenu',

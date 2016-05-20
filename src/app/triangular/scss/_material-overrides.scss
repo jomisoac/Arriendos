@@ -45,3 +45,9 @@ ui-gmap-google-map img {
 md-datepicker, md-datepicker .md-datepicker-input {
   background: none !important;
 }
+
+// md-data-table stop transition on toolbars
+
+.md-table-toolbar {
+  transition: none;
+}

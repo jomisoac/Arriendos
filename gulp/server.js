@@ -41,11 +41,19 @@ gulp.task('serve', ['watch'], function () {
     paths.src + '/app/**/*.js',
     paths.src + 'src/assets/images/**/*',
     paths.tmp + '/serve/*.html',
-    paths.tmp + '/serve/app/**/*.html', 
+    paths.tmp + '/serve/app/**/*.html',
     paths.src + '/app/**/*.html'
   ]);
 });
 
 gulp.task('serve:dist', ['buildapp'], function () {
   browserSyncInit(paths.dist);
+});
+
+gulp.task('serve:e2e', ['inject'], function () {
+  browserSyncInit([paths.tmp + '/serve', paths.src], null, []);
+});
+
+gulp.task('serve:e2e-dist', ['buildapp'], function () {
+  browserSyncInit(paths.dist, null, []);
 });

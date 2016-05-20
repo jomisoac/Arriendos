@@ -78,6 +78,12 @@ gulp.task('fonts', function () {
     .pipe(gulp.dest(paths.dist + '/fonts/'));
 });
 
+gulp.task('translations', function () {
+  return gulp.src('src/**/i18n/*.json')
+    .pipe(gulp.dest(paths.dist + '/'))
+    .pipe($.size());
+});
+
 gulp.task('data', function () {
   return gulp.src('src/**/data/*.json')
     .pipe(gulp.dest(paths.dist + '/'))
@@ -99,4 +105,4 @@ gulp.task('clean', function () {
   return $.del([path.join(paths.dist, '/'), path.join(paths.tmp, '/')]);
 });
 
-gulp.task('buildapp', ['html', 'images', 'fonts', 'misc', 'data', 'examplejs']);
+gulp.task('buildapp', ['html', 'images', 'fonts', 'translations', 'misc', 'data', 'examplejs']);

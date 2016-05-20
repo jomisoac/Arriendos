@@ -6,7 +6,7 @@
         .factory('triLoaderService', LoaderService);
 
     /* @ngInject */
-    function LoaderService() {
+    function LoaderService($rootScope) {
         var active = false;
 
         return {
@@ -22,6 +22,7 @@
 
         function setLoaderActive(setActive) {
             active = setActive;
+            $rootScope.$broadcast('loader', active);
         }
     }
 })();
