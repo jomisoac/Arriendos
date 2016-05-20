@@ -2,6 +2,10 @@
   "name": "triangular",
   "version": "2.5.0",
   "private": true,
+  "main": "main-electron.js",
+  "scripts": {
+    "start": "electron main-electron.js"
+  },
   "devDependencies": {
     "browser-sync": "~2.10.1",
     "chalk": "~1.1.1",
@@ -35,7 +39,8 @@
     "main-bower-files": "~2.11.0",
     "require-dir": "~0.3.0",
     "uglify-save-license": "~0.4.1",
-    "wiredep": "~2.2.2"
+    "wiredep": "~2.2.2",
+    "electron-prebuilt": "^0.37.2"
   },
   "engines": {
     "node": ">=0.10.0"

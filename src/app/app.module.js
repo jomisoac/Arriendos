@@ -7,7 +7,7 @@
             'triangular',
             'ngAnimate', 'ngCookies', 'ngSanitize', 'ngMessages', 'ngMaterial',
             'angularMoment', 'md.data.table',
-            'seed-module',
+            // 'seed-module',
             // uncomment above to activate the example seed module
             // 'app.translate',
             // only need one language?  if you want to turn off translations

@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -29,15 +29,17 @@
             icon: 'zmdi zmdi-accounts-alt',
             type: 'dropdown',
             priority: 1.1,
-            children: [{
-                name: 'Registrar cliente',
-                state: 'triangular.register_client',
-                type: 'link'
-            }, {
-                name: 'Mostrar clientes',
-                state: 'triangular.show_clients',
-                type: 'link'
-            }]
+            children: [
+                // {
+                //     name: 'Registrar cliente',
+                //     state: 'triangular.register_client',
+                //     type: 'link'
+                // },
+                {
+                    name: 'Mostrar clientes',
+                    state: 'triangular.show_clients',
+                    type: 'link'
+                }]
         });
     }
 })();

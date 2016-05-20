@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -6,11 +6,11 @@
         .controller('ShowClientsController', ShowClientsController);
 
     /* @ngInject */
-    function ShowClientsController($scope,Restangular) {
+    function ShowClientsController($scope, Restangular) {
         var vm = this;
         vm.clients = [];
 
-        vm.cargarClientes = getClients;
+        vm.getClients = getClients;
         vm.removeFilter = removeFilter;
 
         vm.query = {
@@ -20,7 +20,7 @@
             page: 1
         };
         vm.selected = [];
-
+        
         vm.filter = {
             options: {
                 debounce: 500
@@ -32,19 +32,20 @@
         function init() {
             var bookmark;
             $scope.$watch('vm.query.filter', function (newValue, oldValue) {
-                if(!oldValue) {
+                if (!oldValue) {
                     bookmark = vm.query.page;
                 }
 
-                if(newValue !== oldValue) {
+                if (newValue !== oldValue) {
                     vm.query.page = 1;
                 }
 
-                if(!newValue) {
+                if (!newValue) {
                     vm.query.page = bookmark;
                 }
+
+                getClients();
             });
-            getClients();
         }
 
         function getClients() {
@@ -56,7 +57,7 @@
             vm.filter.show = false;
             vm.query.filter = '';
 
-            if(vm.filter.form.$dirty) {
+            if (vm.filter.form.$dirty) {
                 vm.filter.form.$setPristine();
             }
         }
