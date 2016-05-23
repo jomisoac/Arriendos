@@ -3,11 +3,11 @@
 
     angular
         .module('app.modules.contract_management')
-        .controller('SeedPageController', SeedPageController);
+        .controller('NewContractController', NewContractController);
 
     /* @ngInject */
-    function SeedPageController() {
+    function NewContractController() {
         var vm = this;
-        vm.testData = ['triangular', 'is', 'great'];
+        
     }
 })();

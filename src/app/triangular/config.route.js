@@ -38,17 +38,17 @@
                     },
                     controllerAs: 'vm'
                 },
-                // 'toolbar@triangular': {
-                //     templateProvider: function($templateRequest, triLayout) {
-                //         if(angular.isDefined(triLayout.layout.toolbarTemplateUrl)) {
-                //             return $templateRequest(triLayout.layout.toolbarTemplateUrl);
-                //         }
-                //     },
-                //     controllerProvider: function(triLayout) {
-                //         return triLayout.layout.toolbarController;
-                //     },
-                //     controllerAs: 'vm'
-                // },
+                'toolbar@triangular': {
+                    templateProvider: function($templateRequest, triLayout) {
+                        if(angular.isDefined(triLayout.layout.toolbarTemplateUrl)) {
+                            return $templateRequest(triLayout.layout.toolbarTemplateUrl);
+                        }
+                    },
+                    controllerProvider: function(triLayout) {
+                        return triLayout.layout.toolbarController;
+                    },
+                    controllerAs: 'vm'
+                },
                 'loader@triangular': {
                     templateProvider: function($templateRequest, triLayout) {
                         if(angular.isDefined(triLayout.layout.loaderTemplateUrl)) {

@@ -1,12 +1,100 @@
-<md-content class="padded-content-page">
-    <div layout="row" layout-align="center center">
-        <h2 class="md-display-3">NUEVO PAGO</h2>
-    </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
-    </div>
-</md-content>
+<div layout="column" layout-gt-xs="row">
+    <md-card flex>
+        <md-card-content>
+            <form name="clientForm">
+                <div>
+                    <div layout layout-xs="column" flex>
+                        <md-input-container flex="30">
+                            <label>Identificación del arrendatario</label>
+                            <input type="number" name="identificacion"
+                                   string-to-number ng-model="vm.pago.identificacion_cliente"
+                                   ng-blur="vm.getClient(vm.pago.identificacion_cliente)">
+                        </md-input-container>
+                        <md-input-container flex="40">
+                            <label>Arrendatario</label>
+                            <input type="text" name="nombres"
+                                   ng-model="vm.pago.nombre_cliente" ng-disabled="true">
+                        </md-input-container>
+                        <style>
+                            .md-datepicker-input-container {
+                                width: 85%;
+                            }
+
+                            .md-datepicker-input {
+                                width: 100%;
+                            }
+                        </style>
+                        <md-datapicker-input style="padding-top: 12px">
+                            <md-datepicker ng-model="vm.pago.fecha_pago" md-placeholder="Ingresa la fecha de pago"
+                                           flex=""></md-datepicker>
+                        </md-datapicker-input>
+
+                    </div>
+                    <div layout layout-xs="column" flex>
+                        <md-input-container flex>
+                            <label>Dirección arrendada</label>
+                            <input type="text" name="direccion"
+                                   ng-model="vm.pago.direccion_arrendada" ng-disabled="true">
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Fecha de arrendamiento</label>
+                            <input type="text" name="fecha_arrendada"
+                                   ng-model="vm.pago.fecha_arrendada" ng-disabled="true">
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>Valor de arriendo actual</label>
+                            <input type="text" name="v_actual"
+                                   ng-model="vm.pago.valor_actual" ng-disabled="true">
+                        </md-input-container>
+                    </div>
+                    <div layout layout-xs="column" flex>
+                        <md-input-container flex>
+                            <label>MES A PAGAR</label>
+                            <md-select style="min-width: 150px" ng-model="vm.pago.mes_principal">
+                                <md-option value="ENERO">ENERO</md-option>
+                                <md-option value="FEBRERO">FEBRERO</md-option>
+                                <md-option value="MARZO">MARZO</md-option>
+                                <md-option value="ABRIL">ABRIL</md-option>
+                                <md-option value="MAYO">MAYO</md-option>
+                                <md-option value="JULIO">JULIO</md-option>
+                                <md-option value="JUNIO">JUNIO</md-option>
+                                <md-option value="AGOSTO">AGOSTO</md-option>
+                                <md-option value="SEPTIEMPRE">SEPTIEMBRE</md-option>
+                                <md-option value="OCTUBRE">OCTUBRE</md-option>
+                                <md-option value="NOVIEMBRE">NOVIEMBRE</md-option>
+                                <md-option value="DICIEMBRE">DICIEMBRE</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container flex>
+                            <label>HASTA</label>
+                            <md-select style="min-width: 150px" ng-model="vm.pago.mes_secundario">
+                                <md-option value="ENERO">ENERO</md-option>
+                                <md-option value="FEBRERO">FEBRERO</md-option>
+                                <md-option value="MARZO">MARZO</md-option>
+                                <md-option value="ABRIL">ABRIL</md-option>
+                                <md-option value="MAYO">MAYO</md-option>
+                                <md-option value="JULIO">JULIO</md-option>
+                                <md-option value="JUNIO">JUNIO</md-option>
+                                <md-option value="AGOSTO">AGOSTO</md-option>
+                                <md-option value="SEPTIEMPRE">SEPTIEMBRE</md-option>
+                                <md-option value="OCTUBRE">OCTUBRE</md-option>
+                                <md-option value="NOVIEMBRE">NOVIEMBRE</md-option>
+                                <md-option value="DICIEMBRE">DICIEMBRE</md-option>
+                            </md-select>
+                        </md-input-container>
+                        <md-input-container flex="30">
+                            <label>Valor a cancelar</label>
+                            <input type="number" name="v_cancel"
+                                   ng-model="vm.pago.valor_cancelacion">
+                        </md-input-container>
+                    </div>
+                </div>
+            </form>
+            <center>
+                <md-button class="md-accent md-raised" ng-click="vm.irFactura()">
+                    Pasar a factura
+                </md-button>
+            </center>
+        </md-card-content>
+    </md-card>
+</div>

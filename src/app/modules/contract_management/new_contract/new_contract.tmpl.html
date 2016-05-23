@@ -1,22 +1,20 @@
 <md-content class="padded-content-page">
     <div>
-        <!--<div layout="row" layout-align="center center">-->
-            <!--<p flex="70"  flex-xs="90" class="md-headline font-weight-300 text-center text-light" >FORMS.WIZARD.INTRO</p>-->
-        <!--</div>-->
-
         <div flex layout="row" layout-align="center center" layout-fill>
             <md-card flex="90" class="md-whiteframe-z1 margin-bottom-100" tri-wizard>
                 <md-toolbar class="md-primary">
                     <div class="md-toolbar-tools" layout="row" layout-align="space-between center">
-                        <h2>Formulario</h2><h2> {{triWizard.progress}}% <span translate>COMPLETO</span></h2>
+                        <h2>Formulario</h2>
+                        <h2> {{triWizard.progress}}% <span translate>COMPLETO</span></h2>
                     </div>
-                    <md-progress-linear class="md-accent padding-bottom-10" md-mode="determinate" ng-value="triWizard.progress"></md-progress-linear>
+                    <md-progress-linear class="md-accent padding-bottom-10" md-mode="determinate"
+                                        ng-value="triWizard.progress"></md-progress-linear>
                 </md-toolbar>
                 <md-tabs class="md-primary" layout-fill md-selected="triWizard.currentStep" md-dynamic-height>
                     <md-tab id="client">
                         <md-tab-label>
                             <span class="oxy-step-label">1</span>
-                            <span >Detalles del cliente arrendatario</span>
+                            <span>Detalles del cliente arrendatario</span>
                         </md-tab-label>
                         <md-tab-body>
                             <md-content class="md-padding">
@@ -24,11 +22,13 @@
                                     <div>
                                         <div layout layout-xs="column" flex>
                                             <md-input-container flex>
-                                                <label translate>Identificacion</label>
-                                                <input type="number" name="identificacion" ng-model="wizardController.data.client.identificacion" required>
-                                                <div ng-messages="clientForm.identificacion.$error" md-auto-hide="false" ng-show="clientForm.identificacion.$touched">
+                                                <label>Identificacion</label>
+                                                <input type="number" name="identificacion"
+                                                       ng-model="wizardController.data.client.identificacion" required>
+                                                <div ng-messages="clientForm.identificacion.$error" md-auto-hide="false"
+                                                     ng-show="clientForm.identificacion.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
@@ -36,20 +36,43 @@
                                         </div>
                                         <div layout layout-xs="column" flex>
                                             <md-input-container flex>
-                                                <label translate>Nombres</label>
-                                                <input type="text" name="nombres" ng-model="wizardController.data.client.nombres" required>
-                                                <div ng-messages="clientForm.nombres.$error" md-auto-hide="false" ng-show="clientForm.nombres.$touched">
+                                                <label>Nombres</label>
+                                                <input type="text" name="nombres"
+                                                       ng-model="wizardController.data.client.nombres" required>
+                                                <div ng-messages="clientForm.nombres.$error" md-auto-hide="false"
+                                                     ng-show="clientForm.nombres.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
                                             <md-input-container flex>
-                                                <label translate>Apellidos</label>
-                                                <input type="text" name="apellidos" ng-model="wizardController.data.client.apellidos" required>
-                                                <div ng-messages="clientForm.apellidos.$error" md-auto-hide="false" ng-show="clientForm.apellidos.$touched">
+                                                <label>Apellidos</label>
+                                                <input type="text" name="apellidos"
+                                                       ng-model="wizardController.data.client.apellidos" required>
+                                                <div ng-messages="clientForm.apellidos.$error" md-auto-hide="false"
+                                                     ng-show="clientForm.apellidos.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
+                                                    </div>
+                                                </div>
+                                            </md-input-container>
+                                        </div>
+                                        <div layout layout-xs="column" flex="50">
+                                            <md-input-container flex>
+                                                <label>Teléfono</label>
+                                                <input ng-maxlength="10" ng-minlength="7" type="number" name="telefono"
+                                                       ng-model="wizardController.data.client.telefono" required>
+                                                <div ng-messages="clientForm.telefono.$error" md-auto-hide="false"
+                                                     ng-show="clientForm.telefono.$touched">
+                                                    <div ng-message when="required">
+                                                        <span>Este campo es requerido</span>
+                                                    </div>
+                                                    <div ng-message when="minlength">
+                                                        <span>El número de telefono debe contener al menos 6 digitos</span>
+                                                    </div>
+                                                    <div ng-message when="maxlength">
+                                                        <span>El número de telefono debe contener maximo 10 digitos</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
@@ -71,19 +94,27 @@
                                         <div layout layout-xs="column" flex>
                                             <md-input-container flex>
                                                 <label translate>Identificacion</label>
-                                                <input type="number" name="identificacion" ng-model="wizardController.data.coarrendatarios.identificacion" required>
-                                                <div ng-messages="coarrendatariosForm.identificacion.$error" md-auto-hide="false" ng-show="coarrendatariosForm.identificacion.$touched">
+                                                <input type="number" name="identificacion"
+                                                       ng-model="wizardController.data.coarrendatarios.identificacion"
+                                                       required>
+                                                <div ng-messages="coarrendatariosForm.identificacion.$error"
+                                                     md-auto-hide="false"
+                                                     ng-show="coarrendatariosForm.identificacion.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
                                             <md-input-container flex>
                                                 <label translate>Lugar de expedicion</label>
-                                                <input name="lexpedicion" ng-model="wizardController.data.coarrendatarios.lexpedicion" required>
-                                                <div ng-messages="coarrendatariosForm.lexpedicion.$error" md-auto-hide="false" ng-show="coarrendatariosForm.lexpedicion.$touched">
+                                                <input name="lexpedicion"
+                                                       ng-model="wizardController.data.coarrendatarios.lexpedicion"
+                                                       required>
+                                                <div ng-messages="coarrendatariosForm.lexpedicion.$error"
+                                                     md-auto-hide="false"
+                                                     ng-show="coarrendatariosForm.lexpedicion.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
@@ -91,19 +122,27 @@
                                         <div layout layout-xs="column" flex>
                                             <md-input-container flex>
                                                 <label translate>Nombres</label>
-                                                <input name="nombres" ng-model="wizardController.data.coarrendatarios.nombres" required>
-                                                <div ng-messages="coarrendatariosForm.nombres.$error" md-auto-hide="false" ng-show="coarrendatariosForm.nombres.$touched">
+                                                <input name="nombres"
+                                                       ng-model="wizardController.data.coarrendatarios.nombres"
+                                                       required>
+                                                <div ng-messages="coarrendatariosForm.nombres.$error"
+                                                     md-auto-hide="false"
+                                                     ng-show="coarrendatariosForm.nombres.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
                                             <md-input-container flex>
                                                 <label translate>Apellidos</label>
-                                                <input name="apellidos" ng-model="wizardController.data.coarrendatarios.apellidos" required>
-                                                <div ng-messages="coarrendatariosForm.apellidos.$error" md-auto-hide="false" ng-show="coarrendatariosForm.apellidos.$touched">
+                                                <input name="apellidos"
+                                                       ng-model="wizardController.data.coarrendatarios.apellidos"
+                                                       required>
+                                                <div ng-messages="coarrendatariosForm.apellidos.$error"
+                                                     md-auto-hide="false"
+                                                     ng-show="coarrendatariosForm.apellidos.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
@@ -111,19 +150,27 @@
                                         <div layout layout-xs="column" flex>
                                             <md-input-container flex>
                                                 <label translate>Direccion</label>
-                                                <input name="direccion" ng-model="wizardController.data.coarrendatarios.direccion" required>
-                                                <div ng-messages="coarrendatariosForm.direccion.$error" md-auto-hide="false" ng-show="coarrendatariosForm.direccion.$touched">
+                                                <input name="direccion"
+                                                       ng-model="wizardController.data.coarrendatarios.direccion"
+                                                       required>
+                                                <div ng-messages="coarrendatariosForm.direccion.$error"
+                                                     md-auto-hide="false"
+                                                     ng-show="coarrendatariosForm.direccion.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
                                             <md-input-container flex>
                                                 <label translate>Telefono</label>
-                                                <input type="tel" name="telefono" ng-model="wizardController.data.coarrendatarios.telefono" required>
-                                                <div ng-messages="coarrendatariosForm.telefono.$error" md-auto-hide="false" ng-show="coarrendatariosForm.telefono.$touched">
+                                                <input type="tel" name="telefono"
+                                                       ng-model="wizardController.data.coarrendatarios.telefono"
+                                                       required>
+                                                <div ng-messages="coarrendatariosForm.telefono.$error"
+                                                     md-auto-hide="false"
+                                                     ng-show="coarrendatariosForm.telefono.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
@@ -131,14 +178,18 @@
                                         <div layout layout-xs="column" flex>
                                             <md-input-container flex>
                                                 <label translate>Ocupacion</label>
-                                                <md-select ng-change="triWizard.updateProgress()" name="ocupacion" ng-model="wizardController.data.coarrendatarios.ocupacion" required>
-                                                    <md-option value="ESTUDIANTE" >ESTUDIANTE</md-option>
-                                                    <md-option value="AMACASA" >AMA DE CASA</md-option>
-                                                    <md-option value="EMPLEADO" >EMPLEADO</md-option>
+                                                <md-select ng-change="triWizard.updateProgress()" name="ocupacion"
+                                                           ng-model="wizardController.data.coarrendatarios.ocupacion"
+                                                           required>
+                                                    <md-option value="ESTUDIANTE">ESTUDIANTE</md-option>
+                                                    <md-option value="AMACASA">AMA DE CASA</md-option>
+                                                    <md-option value="EMPLEADO">EMPLEADO</md-option>
                                                 </md-select>
-                                                <div ng-messages="coarrendatariosForm.ocupacion.$error" md-auto-hide="false" ng-show="coarrendatariosForm.ocupacion.$touched">
+                                                <div ng-messages="coarrendatariosForm.ocupacion.$error"
+                                                     md-auto-hide="false"
+                                                     ng-show="coarrendatariosForm.ocupacion.$touched">
                                                     <div ng-message when="required">
-                                                        <span >Este campo es requerido</span>
+                                                        <span>Este campo es requerido</span>
                                                     </div>
                                                 </div>
                                             </md-input-container>
@@ -180,9 +231,16 @@
                     </md-tab>
                 </md-tabs>
                 <md-card-actions layout="row" layout-align="end center">
-                    <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()" ng-hide="triWizard.currentStep > 2" ng-disabled="triWizard.prevStepDisabled()" >Anterior</md-button>
-                    <md-button class="md-primary md-raised" ng-click="triWizard.nextStep()" ng-hide="triWizard.progress == 100 && triWizard.currentStep > 1" ng-disabled="triWizard.nextStepDisabled()" >Siguiente</md-button>
-                    <md-button class="md-accent md-raised" ng-click="triWizard.currentStep = 3" ng-show="triWizard.progress == 100 && triWizard.currentStep < 3" >Guardar</md-button>
+                    <md-button class="md-primary md-raised" ng-click="triWizard.prevStep()"
+                               ng-hide="triWizard.currentStep > 2" ng-disabled="triWizard.prevStepDisabled()">Anterior
+                    </md-button>
+                    <md-button class="md-primary md-raised" ng-click="triWizard.nextStep()"
+                               ng-hide="triWizard.progress == 100 && triWizard.currentStep > 1"
+                               ng-disabled="triWizard.nextStepDisabled()">Siguiente
+                    </md-button>
+                    <md-button class="md-accent md-raised" ng-click="triWizard.currentStep = 3"
+                               ng-show="triWizard.progress == 100 && triWizard.currentStep < 3">Guardar
+                    </md-button>
                 </md-card-actions>
         </div>
         </md-card>

@@ -1,12 +1,22 @@
 <md-content class="padded-content-page">
-    <div layout="row" layout-align="center center">
-        <h2 class="md-display-3">PROPIEDADES</h2>
-    </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
+    <div layout="row" layout-xs="column">
+        <div flex="50" flex-xs="100">
+            <md-card>
+                <md-card-title>
+                    <md-card-title-text>
+                        <span class="md-headline">Card with image</span>
+                        <span class="md-subhead">Large</span>
+                    </md-card-title-text>
+                    <md-card-title-media>
+                        <div class="md-media-lg card-media">
+                            <img src="assets/images/dashboards/weather.jpg" alt="Card Image">
+                        </div>
+                    </md-card-title-media>
+                </md-card-title>
+                <md-card-actions layout="row" layout-align="end center">
+                    <md-button class="md-primary md-raised">Vizualizar</md-button>
+                </md-card-actions>
+            </md-card>
+        </div>
     </div>
 </md-content>

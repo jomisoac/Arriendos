@@ -6,59 +6,28 @@
         .controller('ShowContractController', ShowContractController);
 
     /* @ngInject */
-    function ShowContractController($scope) {
+    function ShowContractController(Restangular) {
         var vm = this;
-        vm.query = {
-            filter: '',
-            limit: '10',
-            order: '-id',
-            page: 1
-        };
-        vm.selected = [];
+        vm.clients = [];
+        vm.getClients = getClients;
+        vm.openContract = openContract;
 
-        vm.filter = {
-            options: {
-                debounce: 500
-            }
-        };
-        vm.getUsers = getUsers;
-        vm.removeFilter = removeFilter;
-
-        activate();
+        init();
 
         ////////////////
 
-        function activate() {
-            var bookmark;
-            $scope.$watch('vm.query.filter', function (newValue, oldValue) {
-                if(!oldValue) {
-                    bookmark = vm.query.page;
-                }
-
-                if(newValue !== oldValue) {
-                    vm.query.page = 1;
-                }
-
-                if(!newValue) {
-                    vm.query.page = bookmark;
-                }
-
-                vm.getUsers();
-            });
+        function init() {
+            vm.getClients();
         }
 
-        function getUsers() {
-            vm.users = {
-            }
+        function getClients() {
+            Restangular.all('clientes/').getList().then(function (clients) {
+                vm.clients = clients;
+            })
         }
 
-        function removeFilter() {
-            vm.filter.show = false;
-            vm.query.filter = '';
-
-            if(vm.filter.form.$dirty) {
-                vm.filter.form.$setPristine();
-            }
+        function openContract(client) {
+            
         }
     }
 })();

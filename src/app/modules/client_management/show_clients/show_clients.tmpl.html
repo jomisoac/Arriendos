@@ -22,27 +22,26 @@
 
     <md-table-container>
         <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.selected" md-progress="vm.promise">
-            <thead md-head md-order="vm.query.order" md-on-reorder="vm.getUsers">
+            <thead md-head md-order="vm.query.order" md-on-reorder="vm.getClients">
             <tr md-row>
                 <th md-column md-numberic md-order-by="id"><span>CÓDIGO</span></th>
                 <th md-column><span>IDENTIFICACIÓN</span></th>
                 <th md-column><span>ARRENDATARIO</span></th>
                 <th md-column><span>CONTRATO APARTIR DE</span></th>
-                <th md-column><span>DIRECCIÓN</span></th>
             </tr>
             </thead>
             <tbody md-body>
             <tr md-row ng-repeat="client in vm.clients">
+                {{client | json}}
                 <td md-cell>{{client.id}}</td>
-                <td md-cell>{{client.identificacion}}</td>
-                <td md-cell>{{client.nombres | uppercase}} {{client.apellidos | uppercase}}</td>
+                <td md-cell>{{client.cedula}}</td>
+                <td md-cell>{{client.nombre | uppercase}} {{client.apellidos | uppercase}}</td>
                 <td md-cell>{{client.contrato.fecha_inicio | date}}</td>
-                <td md-cell>{{client.direccion | uppercase}}</td>
             </tr>
             </tbody>
         </table>
     </md-table-container>
 
     <md-table-pagination md-limit="vm.query.limit" md-page-select md-page="vm.query.page"
-                         md-total="{{vm.clients.total_count}}" md-on-paginate="vm.getClients"></md-table-pagination>
+                         md-total="{{vm.clients.length}}" md-on-paginate="vm.getClients"></md-table-pagination>
 </md-content>

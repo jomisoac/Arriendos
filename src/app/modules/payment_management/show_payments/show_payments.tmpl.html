@@ -1,12 +1,51 @@
 <md-content class="padded-content-page">
-    <div layout="row" layout-align="center center">
-        <h2 class="md-display-3">PAGOS</h2>
-    </div>
-    <div class="margin-20" layout="row" layout-align="center center">
-        <ul class="seed-list">
-            <li class="md-headline" ng-repeat="test in vm.testData">
-                {{test}}
-            </li>
-        </ul>
-    </div>
+    <md-toolbar ng-hide="vm.selected.length || vm.filter.show" class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+            <h2 class="md-title">Lista de pagos</h2>
+            <div flex></div>
+            <md-button class="md-icon-button" ng-click="vm.filter.show = true">
+                <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+    <md-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-table-toolbar md-default">
+        <div class="md-toolbar-tools">
+            <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+            <form flex="" >
+                <input type="text" ng-model="filtro" placeholder="Buscar cliente">
+            </form>
+            <md-button class="md-icon-button" ng-click="vm.removeFilter()">
+                <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
+            </md-button>
+        </div>
+    </md-toolbar>
+
+    <md-table-container>
+        <table md-table class="md-primary md-data-table" md-progress="vm.promise">
+            <thead md-head md-order="vm.query.order" >
+            <tr md-row>
+                <th md-column md-numberic md-order-by="id"><span>NÚMERO DE PAGO</span></th>
+                <th md-column><span>RECIBIDO DE</span></th>
+                <th md-column><span>FECHA DE PAGO</span></th>
+                <th md-column><span>VALOR</span></th>
+                <th md-column><span>CANCELA MES DE</span></th>
+                <th md-column><span>DIRECCIÓN</span></th>
+                <th md-column><span></span></th>
+            </tr>
+            </thead>
+            <tbody md-body>
+            <tr md-row ng-repeat="payment in vm.payments | filter: filtro" >
+                <td md-cell>{{payment.numero_pago}}</td>
+                <td md-cell>{{payment.cliente.nombre | uppercase}} {{payment.cliente.apellidos | uppercase}}</td>
+                <td md-cell>{{payment.fecha_pago | date}}</td>
+                <td md-cell>{{payment.valor | currency}}</td>
+                <td md-cell>{{payment.concepto}}</td>
+                <td md-cell>{{payment.propiedad.direccion | uppercase}}</td>
+            </tr>
+            </tbody>
+        </table>
+    </md-table-container>
+
+    <md-table-pagination md-limit="vm.query.limit" md-page-select md-page="vm.query.page"
+                         md-total="{{vm.payments.length}}" md-on-paginate="vm.getPayments"></md-table-pagination>
 </md-content>

@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -13,15 +13,28 @@
                 url: '/gestion-pagos/registrar_pago',
                 templateUrl: 'app/modules/payment_management/new_payment/new_payment.tmpl.html',
                 // set the controller to load for this page
-                controller: 'SeedPageController',
-                controllerAs: 'vm'
+                controller: 'NewPaymentController',
+                controllerAs: 'vm',
+                data: {
+                    layout: {
+                        contentClass: 'invoice printable'
+                    }
+                }
             })
             .state('triangular.show_payments', {
                 url: '/gestion-pagos/pagos',
                 templateUrl: 'app/modules/payment_management/show_payments/show_payments.tmpl.html',
                 // set the controller to load for this page
-                controller: 'SeedPageController',
+                controller: 'ShowPaymentsController',
                 controllerAs: 'vm'
+            })
+            .state('triangular.payment_factura', {
+                url: '/gestion-pagos/factura/:pago',
+                templateUrl: 'app/modules/payment_management/new_payment/invoice_payment.tmpl.html',
+                // set the controller to load for this page
+                controller: 'InvoiceController',
+                controllerAs: 'vm',
+                params: {pago : null}
             });
 
         triMenuProvider.addMenu({

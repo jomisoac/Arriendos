@@ -3,11 +3,41 @@
 
     angular
         .module('app.modules.payment_management')
-        .controller('SeedPageController', SeedPageController);
+        .controller('ShowPaymentsController', ShowPaymentsController);
 
     /* @ngInject */
-    function SeedPageController() {
+    function ShowPaymentsController($scope, Restangular) {
         var vm = this;
-        vm.testData = ['triangular', 'is', 'great'];
+        vm.payments = [];
+        vm.getPayments = getPayments;
+        vm.removeFilter = removeFilter;
+
+        vm.query = {
+            filter: '',
+            limit: '10',
+            order: '-id',
+            page: 1
+        };
+        vm.selected = [];
+
+        vm.filter = {
+            options: {
+                debounce: 500
+            }
+        };
+
+        init();
+
+        function init() {
+
+        }
+
+        function getPayments() {
+            
+        }
+
+        function removeFilter() {
+            vm.filter.show = false;
+        }
     }
 })();

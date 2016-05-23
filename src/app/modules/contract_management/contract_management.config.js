@@ -1,4 +1,4 @@
-(function() {
+(function () {
     'use strict';
 
     angular
@@ -12,15 +12,21 @@
             .state('triangular.show_contracts', {
                 url: '/gestion-contratos/contratos',
                 templateUrl: 'app/modules/contract_management/show_contracts/show_contracts.tmpl.html',
-                // set the controller to load for this page
+                // selecciona el controlador que se cargara en esta pagina
                 controller: 'ShowContractController',
-                controllerAs: 'vm'
+                controllerAs: 'vm',
+                data: {
+                    layout: {
+                        contentClass: 'triangular-non-scrolling',
+                        footer: false
+                    }
+                }
             })
             .state('triangular.new_contract', {
                 url: '/gestion-contratos/nuevo_contrato',
                 templateUrl: 'app/modules/contract_management/new_contract/new_contract.tmpl.html',
-                // set the controller to load for this page
-                controller: 'SeedPageController',
+                // selecciona el controlador que se cargara en esta pagina
+                controller: 'NewContractController',
                 controllerAs: 'vm'
             });
 
@@ -33,7 +39,7 @@
                 name: 'Nuevo contrato',
                 state: 'triangular.new_contract',
                 type: 'link'
-            },{
+            }, {
                 name: 'Mostrar contratos',
                 state: 'triangular.show_contracts',
                 type: 'link'

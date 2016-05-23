@@ -20,7 +20,7 @@
                 url: '/gestion-propiedades/propiedades',
                 templateUrl: 'app/modules/property_management/new_property/new_property.tmpl.html',
                 // set the controller to load for this page
-                controller: 'SeedPageController',
+                controller: 'NewPropertyController',
                 controllerAs: 'vm'
             });
 

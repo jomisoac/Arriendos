@@ -1,79 +1,42 @@
-<md-content class="padded-content-page">
-    <!--<div layout="row" layout-align="center center">-->
-        <!--<h2 class="md-display-3">CONTRATOS</h2>-->
-    <!--</div>-->
-    <!--<div class="margin-20" layout="row" layout-align="center center">-->
+<div flex layout="row" class="email-inbox">
+    <md-content  flex="100" flex-gt-xs="40" flex-gt-lg="40" class="md-whiteframe-z1">
+        <md-list class="inbox-list">
+            <md-subheader class="md-primary">
+                <md-toolbar  class="md-table-toolbar md-default">
+                    <div class="md-toolbar-tools">
+                        <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
+                        <form flex="" >
+                            <input type="text" placeholder="Buscar arrendatario" ng-model="filtro">
+                        </form>
+                    </div>
+                </md-toolbar>
+            </md-subheader>
+            <md-divider></md-divider>
+            <md-list-item
+                    class="inbox-list__email inbox-list__email--animated md-3-line md-long-text inbox-list__email--unread"
+                    ng-repeat="client in vm.clients | filter : filtro"
+                    ng-class="{ 'inbox-list__email--active': vm.selected === client.id }"
+                    ng-click="vm.openContract(client)">
+                <md-icon md-font-icon="zmdi zmdi-account-circle mdc-text-red zmdi-hc-fw"></md-icon>
+                <div class="md-list-item-text" layout="column">
+                    <h3>
+                        <span >Identificación: {{client.cedula}} </span><br>
+                        {{ client.nombre }} {{ client.apellidos }}
+                    </h3>
+                    <p>Teléfono: {{ client.telefonos[0]}}</p>
+                    <span class="md-caption" am-time-ago="q.fecha"></span>
+                </div>
+                <md-divider></md-divider>
+            </md-list-item>
+        </md-list>
+    </md-content>
 
-    <!--</div>-->
-    <div>
-        <md-toolbar ng-hide="vm.selected.length || vm.filter.show" class="md-table-toolbar md-default">
-            <div class="md-toolbar-tools">
-                <h2 class="md-title">Contratos</h2>
-                <div flex></div>
-                <md-button class="md-icon-button" ng-click="vm.filter.show = true">
-                    <md-icon md-font-icon="zmdi zmdi-filter-list"></md-icon>
-                </md-button>
+    <div class="animate-wrapper" layout="column" layout-align="start center" flex layout-fill>
+        <div flex id="ui-admin-email" ui-view layout="column" layout-align="start center" layout-fill
+             class="overflow-auto">
+            <div flex class="email-inbox-no-email-selected" layout="column" layout-align="center">
+                <h2 hide-sm translate>No se ha seleccionado ningun arrendatario</h2>
             </div>
-        </md-toolbar>
-        <md-toolbar ng-show="vm.filter.show && !vm.selected.length" class="md-table-toolbar md-default">
-            <div class="md-toolbar-tools">
-                <md-icon md-font-icon="zmdi zmdi-search"></md-icon>
-                <form flex="" name="vm.filter.form">
-                    <input type="text" ng-model="vm.query.filter" ng-model-options="vm.filter.options" placeholder="Buscar">
-                </form>
-                <md-button class="md-icon-button" ng-click="vm.removeFilter()">
-                    <md-icon md-font-icon="zmdi zmdi-close"></md-icon>
-                </md-button>
-            </div>
-        </md-toolbar>
-
-        <!--<md-toolbar class="md-table-toolbar alternate" ng-show="vm.selected.length">-->
-            <!--<div class="md-toolbar-tools" layout-align="space-between">-->
-                <!--<div>{{vm.selected.length}} {{vm.selected.length > 1 ? 'users' : 'user'}} selected</div>-->
-            <!--</div>-->
-        <!--</md-toolbar>-->
-
-        <md-table-container>
-            <table md-table class="md-primary md-data-table" md-row-select ng-model="vm.selected" md-progress="vm.promise">
-                <thead md-head md-order="vm.query.order" md-on-reorder="vm.getUsers">
-                <tr md-row>
-                    <th md-column md-numberic md-order-by="id"><span >Identificacion</span></th>
-                    <th md-column><span >Nombres</span></th>
-                    <th md-column><span >Apellidos</span></th>
-                    <th md-column><span >Fehca de contrato</span></th>
-                    <th md-column><span >Valor de arriendo</span></th>
-                    <th md-column><span >Acciones</span></th>
-                </tr>
-                </thead>
-                <tbody md-body>
-                <tr md-row >
-                    <td md-cell>1120746041</td>
-                    <td md-cell>Jose Miguel</td>
-                    <td md-cell>Soto Acosta</td>
-                    <td md-cell>03/03/2016</td>
-                    <td md-cell>{{ 850000 | currency}}</td>
-                    <td md-cell>
-                        <a class="list-group-item" title="Ver" href="javascript:;"><i class="zmdi zmdi-eye zmdi-hc-2x zmdi-hc-border mdc-text-blue"></i></a>
-                        <a class="list-group-item" title="Editar" href="javascript:;"><i class="zmdi zmdi-edit zmdi-hc-2x zmdi-hc-border mdc-text-green"></i></a>
-                        <a class="list-group-item" title="Eliminar" href="javascript:;"><i class="zmdi zmdi-delete zmdi-hc-2x zmdi-hc-border mdc-text-red"></i></a>
-                    </td>
-                </tr>
-                <tr md-row >
-                    <td md-cell>26995809</td>
-                    <td md-cell>Isabel Paulina</td>
-                    <td md-cell>Acosta Sierra</td>
-                    <td md-cell>03/03/2016</td>
-                    <td md-cell>{{ 1500000 | currency}}</td>
-                    <td md-cell>
-                        <a class="list-group-item" title="Ver" href="javascript:;"><i class="zmdi zmdi-eye zmdi-hc-2x zmdi-hc-border mdc-text-blue"></i></a>
-                        <a class="list-group-item" title="Editar" href="javascript:;"><i class="zmdi zmdi-edit zmdi-hc-2x zmdi-hc-border mdc-text-green"></i></a>
-                        <a class="list-group-item" title="Eliminar" href="javascript:;"><i class="zmdi zmdi-delete zmdi-hc-2x zmdi-hc-border mdc-text-red"></i></a>
-                    </td>
-                </tr>
-                </tbody>
-            </table>
-        </md-table-container>
-
-        <md-table-pagination md-limit="vm.query.limit" md-page-select md-page="vm.query.page" md-total="{{vm.users.length}}" md-on-paginate="vm.getUsers"></md-table-pagination>
+        </div>
     </div>
-</md-content>
+</div>

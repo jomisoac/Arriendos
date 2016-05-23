@@ -9,6 +9,7 @@
     function ShowClientsController($scope, Restangular) {
         var vm = this;
         vm.clients = [];
+        vm.client = {};
 
         vm.getClients = getClients;
         vm.removeFilter = removeFilter;
@@ -44,13 +45,15 @@
                     vm.query.page = bookmark;
                 }
 
-                getClients();
+                vm.getClients();
             });
         }
 
         function getClients() {
-            vm.clients = [];
-            vm.clients = Restangular.all('clientes/').getList().$object;
+            vm.clients = []
+            Restangular.all('clientes?limit=10&page=1').getList().then(function (clients) {
+                vm.clients = clients
+            });
         }
 
         function removeFilter() {
